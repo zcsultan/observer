@@ -102,42 +102,40 @@ Revised Novebmer 24, 2015
 
         // Fix Flickr images treated as videos.
         $(document).ready(function(){
-            // Grab the videoWrappers that are already here.
-            var videoWrappers = document.querySelectorAll('.videoWrapper');
-            for(var i = 0, len = videoWrappers.length; i < len; i++) {
-                fixFlickr(videoWrappers[i]);
-            }
+          // Grab the videoWrappers that are already here.
+          var videoWrappers = document.querySelectorAll('.videoWrapper');
+          for(var i = 0, len = videoWrappers.length; i < len; i++) {
+              fixFlickr(videoWrappers[i]);
+          }
 
-            // Also process any new nodes that are added to the page.
-            var observer,
-			observerConfig = {
-				childList: true,
-				subtree: true
-			};
+          // Also process any new nodes that are added to the page.
+          var observer,
+          observerConfig = {
+          	childList: true,
+          	subtree: true
+          };
 
-			observer = new MutationObserver(function (mutations) {
-				for (var i = 0, len = mutations.length; i < len; i++) {
-					// If there were new nodes added, we check that they are valid flickr embeds
-					if (mutations[i].addedNodes.length && mutations[i].addedNodes[0].querySelector) {
-					    var newVideoWrapper = mutations[i].addedNodes[0].querySelector('.videoWrapper');
-						if (newVideoWrapper !== null) {
-							fixFlickr(newVideoWrapper);
-						}
-					}
-				}
-			});
+          observer = new MutationObserver(function (mutations) {
+          	for (var i = 0, len = mutations.length; i < len; i++) {
+          		// If there were new nodes added, we check that they are valid flickr embeds
+          		if (mutations[i].addedNodes.length && mutations[i].addedNodes[0].querySelector) {
+          		    var newVideoWrapper = mutations[i].addedNodes[0].querySelector('.videoWrapper');
+          			if (newVideoWrapper !== null) {
+          				fixFlickr(newVideoWrapper);
+          			}
+          		}
+          	}
+          });
 
-			observer.observe(document.getElementById('content'), observerConfig);
+          observer.observe(document.getElementById('content'), observerConfig);
         });
 
         function fixFlickr(videoWrapper){
-            console.log(videoWrapper);
-            var potentialEmbed = videoWrapper.firstElementChild;
-            if(potentialEmbed.hasAttribute('data-flickr-embed')) {
-                console.log('fixme');
-                videoWrapper.style.paddingBottom = 0;
-                videoWrapper.style.height = 'auto';
-            }
+          var potentialEmbed = videoWrapper.firstElementChild;
+          if(potentialEmbed.hasAttribute('data-flickr-embed')) {
+              videoWrapper.style.paddingBottom = 0;
+              videoWrapper.style.height = 'auto';
+          }
         }
 
         //disable safari active states
