@@ -5,7 +5,7 @@
 Observer Theme
 By Zack Sultan
 Released January 2013
-Revised November 24, 2015
+Revised June 25, 2017
 
 -->
 
@@ -35,7 +35,6 @@ Revised November 24, 2015
         <meta name="if:Show Post Tags" content="1"/>
         <meta name="if:Show Post Notes" content="1"/>
         <meta name="if:Show Copyright" content="0"/>
-        <meta name="if:Infinite Scroll" content="1"/>
 
         <meta name="Title font" content="Gibson">
         <meta name="Title font weight" content="bold" title="Bold">
@@ -61,11 +60,6 @@ Revised November 24, 2015
 <!-- Scripts -->
 
     <script src="http://static.tumblr.com/4kpnlef/Pttmhz2ap/jquery-1.9.1.min.js"></script>
-
-    {block:IfInfiniteScroll}
-    <!-- Infinite Scroll -->
-    <script type="text/javascript" src="http://static.tumblr.com/rsdylxf/v40mu99v6/infinitescrolling.js" ></script>
-    {/block:IfInfiniteScroll}
 
     {block:IfTypeKitID}
     <!-- Typekit -->
@@ -1724,7 +1718,7 @@ line-height: 42px;
 
 			<div id="footer">
 
-                {block:IfNotInfiniteScroll}
+
                 {block:Pagination}
 
                 <h2>
@@ -1738,7 +1732,7 @@ line-height: 42px;
                 </h2>
 
                 {/block:Pagination}
-                {/block:IfNotInfiniteScroll}
+
 
 				<div id="footer-links">
 
